@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mapa de Oportunidades con IA</title>
+  <meta name="description" content="Descubre y comparte oportunidades de negocio detectadas en ciudades de todo el mundo, con soluciones basadas en inteligencia artificial." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+
+  <header class="hero">
+    <span class="badge">🌍 Comunidad abierta</span>
+    <h1>Mapa de Oportunidades <span class="gradient-text">con IA</span></h1>
+    <p>Detecta problemas reales en tu ciudad y propón cómo la inteligencia artificial puede convertirlos en negocio. Todo lo que publiques lo ve el mundo.</p>
+    <div class="stats">
+      <div><strong id="stat-total">0</strong><span>oportunidades</span></div>
+      <div><strong id="stat-cities">0</strong><span>ciudades</span></div>
+      <div><strong id="stat-likes">0</strong><span>likes</span></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Formulario -->
+    <section class="card form-card" aria-labelledby="form-title">
+      <h2 id="form-title">✨ Publicar oportunidad</h2>
+      <form id="opportunity-form" autocomplete="off">
+        <label>Nombre
+          <input id="f-name" name="name" required maxlength="120" placeholder="Ej: Rutas inteligentes para mercados" />
+        </label>
+        <div class="row">
+          <label>Ciudad
+            <input id="f-city" name="city" required maxlength="80" placeholder="Ej: Medellín" />
+          </label>
+          <label>País
+            <input id="f-country" name="country" required maxlength="80" placeholder="Ej: Colombia" />
+          </label>
+        </div>
+        <label>Problema
+          <textarea id="f-problem" name="problem" required maxlength="1000" rows="3" placeholder="¿Qué problema detectaste?"></textarea>
+        </label>
+        <label>Solución con IA
+          <textarea id="f-solution" name="ai_solution" required maxlength="1000" rows="3" placeholder="¿Cómo lo resolvería la IA?"></textarea>
+        </label>
+        <div class="row">
+          <label>Categoría
+            <select id="f-category" name="category" required>
+              <option value="">Elige…</option>
+              <option>Salud</option>
+              <option>Educación</option>
+              <option>Transporte</option>
+              <option>Comercio</option>
+              <option>Finanzas</option>
+              <option>Agricultura</option>
+              <option>Turismo</option>
+              <option>Energía</option>
+              <option>Seguridad</option>
+              <option>Otra</option>
+            </select>
+          </label>
+          <label>Potencial
+            <select id="f-potential" name="potential" required>
+              <option value="Alto">🔥 Alto</option>
+              <option value="Medio" selected>⚡ Medio</option>
+              <option value="Bajo">🌱 Bajo</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit" id="submit-btn" class="btn-primary">Publicar para todos</button>
+        <p id="form-msg" class="msg" role="status"></p>
+      </form>
+    </section>
+
+    <!-- Lista -->
+    <section class="list-section" aria-labelledby="list-title">
+      <h2 id="list-title" class="sr-only">Oportunidades publicadas</h2>
+      <div class="card filters">
+        <select id="flt-country" aria-label="Filtrar por país"><option value="">🌎 Todos los países</option></select>
+        <select id="flt-city" aria-label="Filtrar por ciudad"><option value="">🏙️ Todas las ciudades</option></select>
+        <select id="flt-category" aria-label="Filtrar por categoría"><option value="">🏷️ Todas las categorías</option></select>
+        <select id="flt-sort" aria-label="Ordenar">
+          <option value="recent">Más recientes</option>
+          <option value="likes">Más likes</option>
+        </select>
+        <button id="refresh-btn" class="btn-ghost" type="button" title="Recargar desde Supabase">⟳</button>
+      </div>
+
+      <div id="status" class="status" role="status"></div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer>Hecho con HTML, CSS, JavaScript y Supabase</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
